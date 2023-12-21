@@ -1,0 +1,6 @@
+add_subdirectory(startup_code)
+add_subdirectory(rv_core_specific)
+add_subdirectory(peripheral_drivers)
+add_subdirectory(helpers)
+add_subdirectory(freertos_helpers)
+add_subdirectory(user_code)

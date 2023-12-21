@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "CH32V_Debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/ch32v307_template.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "serverpath": "/home/rafal/Desktop/WCH_experiments/riscv_toolchain/OpenOCD/bin/openocd",
+            "gdbPath" : "gdb-multiarch",
+            "device": "CH32V307VCT6",
+            "configFiles": [
+                "/home/rafal/Desktop/WCH_experiments/riscv_toolchain/OpenOCD/bin/wch-riscv.cfg",
+            ],
+            "runToEntryPoint": "main",
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ]
+        }
+    ]
+}
+
