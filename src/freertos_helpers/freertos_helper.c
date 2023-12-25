@@ -17,7 +17,7 @@ void vPortSetupTimerInterrupt(void) {
     NVIC_EnableIRQ(SysTicK_IRQn);
 
     SysTick->CMP = configCPU_CLOCK_HZ / configTICK_RATE_HZ;
-    SysTick->CTLR = 0x1E; /* COUNTDOWN | AUTO RELOAD | HCLK/8 | INT */
+    SysTick->CTLR = 0x1E;  /* COUNTDOWN | AUTO RELOAD | HCLK/8 | INT */
     SysTick->CTLR |= 0x20; /* INIT */
     SysTick->CTLR |= 0x01; /* EN */
 }

@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "system_ch32v30x.h": "c",
-        "freertos.h": "c"
-    }
+        "freertos.h": "c",
+        "debug.h": "c",
+        "task.h": "c",
+        "ch32v30x.h": "c"
+    },
+    "editor.defaultFormatter": "xaver.clang-format",
+    "editor.formatOnSave": true
 }

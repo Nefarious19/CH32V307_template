@@ -11,8 +11,8 @@
 
 extern void freertos_risc_v_mtimer_interrupt_handler();
 
-#define __IRQ __attribute__((interrupt()))
-#define __IRQ_WEAK __attribute__((interrupt(), weak))
+#define __IRQ       __attribute__((interrupt()))
+#define __IRQ_WEAK  __attribute__((interrupt(), weak))
 #define __IRQ_NAKED __attribute__((naked))
 
 /**
@@ -29,9 +29,9 @@ extern void freertos_risc_v_mtimer_interrupt_handler();
  *
  */
 __IRQ_WEAK void Default_Handler(void) {
-  for (;;) {
-    /* Where are you from? */
-  }
+    for (;;) {
+        /* Where are you from? */
+    }
 }
 
 /**
@@ -39,9 +39,9 @@ __IRQ_WEAK void Default_Handler(void) {
  *
  */
 __IRQ_WEAK void Fault_Handler(void) {
-  for (;;) {
-    /* Emmmmmmmmm? */
-  }
+    for (;;) {
+        /* Emmmmmmmmm? */
+    }
 }
 
 /**
@@ -49,9 +49,9 @@ __IRQ_WEAK void Fault_Handler(void) {
  *
  */
 __IRQ_WEAK void Ecall_U_Handler(void) {
-  for (;;) {
-    /* Who called me? */
-  }
+    for (;;) {
+        /* Who called me? */
+    }
 }
 
 /**
@@ -59,8 +59,8 @@ __IRQ_WEAK void Ecall_U_Handler(void) {
  *
  */
 __IRQ_NAKED void Ecall_M_Handler(void) {
-  /* Use naked function to generate a short call, without saving stack. */
-  asm("j freertos_risc_v_exception_handler");
+    /* Use naked function to generate a short call, without saving stack. */
+    asm("j freertos_risc_v_exception_handler");
 }
 
 /**
@@ -76,15 +76,13 @@ __IRQ_WEAK void NMI_Handler(void) { /* NMI handler */
  * @return __IRQ_NAKED
  */
 __IRQ_NAKED void SysTick_Handler(void) {
-      asm volatile(
-        "addi sp, sp, -4\n"     /* Push */
-        "sw t0, 4(sp)\n"        /* Save t0 on stack */
-        "li t0, 0xE000F004\n"   /* SysTick->SR */
-        "sw zero, 0(t0)\n"      /* Write 0 to clear */
-        "lw t0, 4(sp)\n"        /* Restore t0 from stack */
-        "addi sp, sp, 4\n"      /* Pop */
-        "j freertos_risc_v_mtimer_interrupt_handler"
-    );
+    asm volatile("addi sp, sp, -4\n"   /* Push */
+                 "sw t0, 4(sp)\n"      /* Save t0 on stack */
+                 "li t0, 0xE000F004\n" /* SysTick->SR */
+                 "sw zero, 0(t0)\n"    /* Write 0 to clear */
+                 "lw t0, 4(sp)\n"      /* Restore t0 from stack */
+                 "addi sp, sp, 4\n"    /* Pop */
+                 "j freertos_risc_v_mtimer_interrupt_handler");
 }
 
 /**

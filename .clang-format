@@ -1,0 +1,7 @@
+﻿---
+BasedOnStyle: Microsoft
+BreakBeforeBraces: Attach
+MaxEmptyLinesToKeep: 1
+AlignConsecutiveMacros: true
+ColumnLimit: 160
+...
